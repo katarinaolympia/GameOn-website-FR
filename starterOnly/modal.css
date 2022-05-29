@@ -1,7 +1,7 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
-  --modal-duration: 0.8s;
+  --modal-duration: 0.8s; /* Est ce qu'il ne faut pas mettre jusqu'à fermeture de la modale ?*/
 }
 * {
   box-sizing: border-box;
@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,15 +69,28 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+    color: #ff0000;
+    font-size: 27px;
+    padding-top: 23px;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  /* Logo */
+  .topnav img {
+    height: 65%;
+    width: 65%;
+    padding-top: 7px;
+  }
+
+  /* Menu déroulant */
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -88,18 +101,37 @@ img {
     display: block;
     text-align: left;
   }
+  .topnav a.icon:hover,
+  .topnav a.icon:active {
+    color: white;
+  }
+
+  h1 {
+    font-size: 35px !important;
+    font-weight: bold !important;
+  }
+
+  p {
+    font-size: 14px !important;
+    margin-top: 30px !important;
+  }
+
+  .hero-content {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +143,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -526,4 +556,3 @@ footer {
     opacity: 1;
   }
 }
-
