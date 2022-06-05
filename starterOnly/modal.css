@@ -1,7 +1,7 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
-  --modal-duration: 0.8s; /* Est ce qu'il ne faut pas mettre jusqu'à fermeture de la modale ?*/
+  --modal-duration: 0.3s;
 }
 * {
   box-sizing: border-box;
@@ -211,6 +211,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .modal-body {
@@ -256,6 +257,25 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+/* Span message d'erreur */
+.error-message {
+  color: #f00;
+  font-size: 12px;
+  transition: 0.3s ease;
+  display: none;
+}
+
+#error-message-checkbox {
+  margin-left: 6px;
+}
+
+/* Modale confirmation d'inscription texte */
+#text-inscription {
+  transform: translate3d(0, -50%, 0);
+  text-align: center;
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -352,7 +372,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+#btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -363,6 +384,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-submit {
+  margin-top: 20px;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;

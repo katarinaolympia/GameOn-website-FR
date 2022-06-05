@@ -11,131 +11,143 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalClose = document.querySelector(".close");
-const cgvInput = document.querySelector(".checkbox2-label");
+const modalCloseBtn = document.querySelectorAll(".close");
 const inputSubmit = document.querySelector(".btn-submit");
-let firstNameInput = document.getElementById("first");
-let lastNameInput = document.getElementById("last");
-let emailInput = document.getElementById("email");
-let birthDateInput = getElementById("birthdate");
-let quantityInput = document.getElementById("quantity");
-let checkboxInput = document.querySelector(".checkbox-input");
+const modalConfirmation = document.querySelector("#modal-confirmation");
+const modalConfirmationCloseBtn = document.querySelector("#btn-close");
 
-// launch modal event
+// DOM Error Message
+
+const errorMessageFirst = document.querySelector("#error-message-first");
+const errorMessageLast = document.querySelector("#error-message-last");
+const errorMessageEmail = document.querySelector("#error-message-email");
+const errorMessageBirthDate = document.querySelector("#error-message-birthdate");
+const errorMessageNumber = document.querySelector("#error-message-number");
+const errorMessageLocation = document.querySelector("#error-message-location");
+const errorMessageCheckbox = document.querySelector("#error-message-checkbox");
+
+
+
+// launch modal event (1)
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// launch modal form (1)
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// closing modal form
-modalClose.addEventListener("click", (e) => {
-  style.display = "none";
-});
+// closing modal form (1)
+modalCloseBtn.forEach((btn) => btn.addEventListener("click", modalClose));
 
-// Implémenter les entrées du formulaire
-// Champs Nom & Prénom
-firstNameInput.addEventListener("input", () => {
-  if ((firstNameInput.minLenght = 2)) {
-    return true;
-  } else {
-    document.getElementById("first").innerHTML =
-      "Veuillez entrez votre prénom.";
-      return false;
-  }
-});
+function modalClose() {
+  modalbg.style.display = "none";
+}
 
-lastNameInput.addEventListener("input", () => {
-  if ((lastNameInput.minLenght = 2)) {
-    return true;
-  } else {
-    document.getElementById("last").innerHTML = "Veuillez entrez votre nom.";
+// Form input implementation
+const checkFirstName = function (inputName) {
+  if (inputName.length < 2 || inputName === "") {
+    errorMessageFirst.style.display = "inline-block";
     return false;
   }
-});
+  errorMessageFirst.style.display = "none";
+  return true;
+};
 
-// Champ email
-emailInput.addEventListener("input", () => {
-  var validRegex =
-    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?: \.[a-zA-Z0-9-]+)*$/;
-  if (input.value.match(validRegex)) {
-    return true;
-  } else {
-    alert("Entrez une adresse email valide !");
-    return false;
-  }
-});
-
-// Champ date de naissance
-birthDateInput.addEventListener("input", () => {
-  if (isNaN) {
-    document.getElementById("birthdate").innerHTML =
-      "Entrez votre date de naissance.";
+const checkLastName = function (lastNameInput) {
+  if (lastNameInput.length < 2 || lastNameInput === "") {
+    errorMessageLast.style.display = "inline-block";
     return false;
   } else {
+    errorMessageLast.style.display = "none";
     return true;
   }
-});
+};
 
-// Champ nombre de tournoi
-quantityInput.addEventListener("input", () => {
-  if (quantity >= 0 && quantity < 99) {
-    return true;
-  } else {
-    document.getElementById("quantity").innerHTML = "Entrez un numéro valide.";
-    return false;
-  }
-});
-
-// Champ sélection ville
-checkboxInput.addEventListener("input", () => {
-  if (checkboxInput.checked) {
+const checkEmail = function (emailInput) {
+  const validRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  if (validRegex.test(emailInput)) {
+    errorMessageEmail.style.display = "none";
     return true;
   } else {
-    innerHTML = "Sélectionnez une ville.";
+    errorMessageEmail.style.display = "inline-block";
     return false;
   }
-});
+};
 
-// Champ conditions générales
-cgvInput.addEventListener("input", () => {
-  if (cgvInput.checked) {
+const checkBirthDate = function (birthdateInput) {
+  let birthdate = new Date(birthdateInput);
+
+  if (
+    birthdateInput === "" ||
+    birthdate.getFullYear() > 2022 ||
+    birthdate.getFullYear() < 1932
+  ) {
+    errorMessageBirthDate.style.display = "inline-block";
+    return false;
+  } else {
+    errorMessageBirthDate.style.display = "none";
+    return true;
+  }
+};
+
+const checkNumberOfGame = function (quantityInput) {
+  if (quantityInput.isNan || quantityInput > 99 || quantityInput < 0) {
+    errorMessageNumber.style.display = "inline-block";
+    return false;
+  } else {
+    errorMessageNumber.style.display = "none";
+    return true;
+  }
+};
+
+const checkLocation = function () {
+  if (
+    document.getElementById("location1").checked ||
+    document.getElementById("location2").checked ||
+    document.getElementById("location3").checked ||
+    document.getElementById("location4").checked ||
+    document.getElementById("location5").checked ||
+    document.getElementById("location6").checked
+  ) {
+    errorMessageLocation.style.display = "none";
     return true;
   } else {
-    innerHTML =
-      "Vous devez vérifier que vous acceptez les termes et conditions.";
+    errorMessageLocation.style.display = "inline-block";
     return false;
   }
-});
+};
 
-// Envoi formulaire
-formData.addEventListener("submit", (e) => {
-  e.preventDefault();
-  firstNameInput.minLenght = 2;
-  lastNameInput.minLength = 2;
-  emailInput = true;
-  validateBirthDate = true;
-  quantityInput = true;
-  checkboxInput = true;
-  cgvInput = true;
-});
+const checkCheckbox = function (checkboxInput) {
+  if (document.getElementById("checkbox1").checked) {
+    errorMessageCheckbox.style.display = "none";
+    return true;
+  } else {
+    errorMessageCheckbox.style.display = "inline-block";
+    return false;
+  }
+};
 
-// Récupération de data
-inputName.addEventListener("input", (e) => {
-  firstName = e.target.value;
-});
-inputLastName.addEventListener("input", (e) => {
-  lastName = e.target.value;
-});
 
-// Message de confirmation d'envoi réussi : PAS OPÉRATIONNEL
-inputSubmit.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert ("Merci ! Votre réservation a été reçue.");
-  innerHTML =
-      "Merci pour votre inscription";
-  style.
-});
+// form validation
+inputSubmit.addEventListener("click", (event) => {
+  // DOM Let elements
+  event.preventDefault();
+  let firstNameValue = document.querySelector("#first").value;
+  let lastNameValue = document.querySelector("#last").value;
+  let emailValue = document.querySelector("#email").value;
+  let birthdateValue = document.querySelector("#birthdate").value
+  let quantityValue = document.querySelector("#quantity").value;
 
+  if (
+    checkFirstName(firstNameValue) === true &&
+    checkLastName(lastNameValue) === true &&
+    checkEmail(emailValue) === true &&
+    checkBirthDate(birthdateValue) === true &&
+    checkNumberOfGame(quantityValue) === true &&
+    checkLocation() === true &&
+    checkCheckbox() === true
+  ) {
+    // return launchModalConfirmation();
+  }
+});
 

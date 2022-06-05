@@ -63,9 +63,7 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
+              action="#"
             >
               <div
                 class="formData">
@@ -75,9 +73,11 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  
                 /><br>
+                <span class="error-message" id="error-message-first">Veuillez entrer votre prénom !</span>
               </div>
+              
               <div
                 class="formData">
                 <label>Nom</label><br>
@@ -87,7 +87,9 @@
                   id="last"
                   name="last"
                 /><br>
+                <span class="error-message" id="error-message-last">Veuillez entrer votre nom !</span>
               </div>
+
               <div
                 class="formData">
                 <label>E-mail</label><br>
@@ -97,7 +99,9 @@
                   id="email"
                   name="email"
                 /><br>
+                <span class="error-message" id="error-message-email">Veuillez entrer une adresse mail valide !</span>
               </div>
+
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -107,14 +111,18 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="error-message" id="error-message-birthdate">Veuillez entrer votre date de naissance !</span>
               </div>
+
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <span class="error-message" id="error-message-number">Veuillez entrer un chiffre.</span>
               </div>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div
+              <br
                 class="formData">
                 <input
                   class="checkbox-input"
@@ -181,7 +189,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br>
+                <span class="error-message" id="error-message-location">Veuillez sélectionner une ville !</span>
               </div>
 
               <div
@@ -200,10 +209,12 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <span class="error-message" id="error-message-checkbox">Veuillez accepter les conditions générales d'utilisation.</span>
               </div>
+              
               <input
                 class="btn-submit"
                 type="submit"
@@ -216,10 +227,12 @@
       </div>
 
       <!-- Modale de confirmation d'inscription -->
-      <div class = "modal-confirmation">
+      <div id = "modal-confirmation" class="bground">
+        <div class="content">
         <span class="close"></span>
-        <p>Merci pour votre inscription !</p>
-        <button class="btn-fermer">Fermer</button>
+        <p id="text-inscription">Merci pour votre inscription !</p>
+        <button id="btn-close">Fermer</button>
+        </div>
       </div>
 
     </main>
