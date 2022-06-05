@@ -21,12 +21,12 @@ const modalConfirmationCloseBtn = document.querySelector("#btn-close");
 const errorMessageFirst = document.querySelector("#error-message-first");
 const errorMessageLast = document.querySelector("#error-message-last");
 const errorMessageEmail = document.querySelector("#error-message-email");
-const errorMessageBirthDate = document.querySelector("#error-message-birthdate");
+const errorMessageBirthDate = document.querySelector(
+  "#error-message-birthdate"
+);
 const errorMessageNumber = document.querySelector("#error-message-number");
 const errorMessageLocation = document.querySelector("#error-message-location");
 const errorMessageCheckbox = document.querySelector("#error-message-checkbox");
-
-
 
 // launch modal event (1)
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -47,18 +47,24 @@ function modalClose() {
 const checkFirstName = function (inputName) {
   if (inputName.length < 2 || inputName === "") {
     errorMessageFirst.style.display = "inline-block";
+    document.querySelector(".error-outline-first").style.outline =
+      "1px solid red";
     return false;
   }
   errorMessageFirst.style.display = "none";
+  document.querySelector(".error-outline-first").style.outline = "none";
   return true;
 };
 
 const checkLastName = function (lastNameInput) {
   if (lastNameInput.length < 2 || lastNameInput === "") {
     errorMessageLast.style.display = "inline-block";
+    document.querySelector(".error-outline-last").style.outline =
+      "1px solid red";
     return false;
   } else {
     errorMessageLast.style.display = "none";
+    document.querySelector(".error-outline-last").style.outline = "none";
     return true;
   }
 };
@@ -67,9 +73,12 @@ const checkEmail = function (emailInput) {
   const validRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   if (validRegex.test(emailInput)) {
     errorMessageEmail.style.display = "none";
+    document.querySelector(".error-outline-email").style.outline = "none";
     return true;
   } else {
     errorMessageEmail.style.display = "inline-block";
+    document.querySelector(".error-outline-email").style.outline =
+      "1px solid red";
     return false;
   }
 };
@@ -83,19 +92,25 @@ const checkBirthDate = function (birthdateInput) {
     birthdate.getFullYear() < 1932
   ) {
     errorMessageBirthDate.style.display = "inline-block";
+    document.querySelector(".error-outline-birthdate").style.outline =
+      "1px solid red";
     return false;
   } else {
     errorMessageBirthDate.style.display = "none";
+    document.querySelector(".error-outline-birthdate").style.outline = "none";
     return true;
   }
 };
 
 const checkNumberOfGame = function (quantityInput) {
-  if (quantityInput.isNan || quantityInput > 99 || quantityInput < 0) {
+  if (quantityInput.isNan || quantityInput ==="" || quantityInput > 99 || quantityInput < 0) {
     errorMessageNumber.style.display = "inline-block";
+    document.querySelector(".error-outline-number").style.outline =
+      "1px solid red";
     return false;
   } else {
     errorMessageNumber.style.display = "none";
+    document.querySelector(".error-outline-number").style.outline = "none";
     return true;
   }
 };
@@ -127,7 +142,6 @@ const checkCheckbox = function (checkboxInput) {
   }
 };
 
-
 // form validation
 inputSubmit.addEventListener("click", (event) => {
   // DOM Let elements
@@ -135,7 +149,7 @@ inputSubmit.addEventListener("click", (event) => {
   let firstNameValue = document.querySelector("#first").value;
   let lastNameValue = document.querySelector("#last").value;
   let emailValue = document.querySelector("#email").value;
-  let birthdateValue = document.querySelector("#birthdate").value
+  let birthdateValue = document.querySelector("#birthdate").value;
   let quantityValue = document.querySelector("#quantity").value;
 
   if (
@@ -150,4 +164,3 @@ inputSubmit.addEventListener("click", (event) => {
     // return launchModalConfirmation();
   }
 });
-
