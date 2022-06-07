@@ -194,6 +194,7 @@
               </div>
 
               <div
+              id="checkbox"
                 class="formData">
                 <input
                   class="checkbox-input"
@@ -206,13 +207,13 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span class="error-message" id="error-message-checkbox">Veuillez accepter les conditions générales d'utilisation.</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-                <span class="error-message" id="error-message-checkbox">Veuillez accepter les conditions générales d'utilisation.</span>
               </div>
               
               <input
@@ -227,11 +228,13 @@
       </div>
 
       <!-- Modale de confirmation d'inscription -->
-      <div id = "modal-confirmation" class="bground">
-        <div class="content">
+      <div id="modal-confirmation" class="bground">
+        <div id="modal-confirmation-content" class="content">
         <span class="close"></span>
+        <div class="modal-body">
         <p id="text-inscription">Merci pour votre inscription !</p>
-        <button id="btn-close">Fermer</button>
+        <input id="btn-close-validate" class="btn-close button" value="Fermer"></input>
+        </div>
         </div>
       </div>
 

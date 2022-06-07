@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelectorAll(".close");
 const inputSubmit = document.querySelector(".btn-submit");
 const modalConfirmation = document.querySelector("#modal-confirmation");
-const modalConfirmationCloseBtn = document.querySelector("#btn-close");
+const modalConfirmationCloseBtn = document.querySelectorAll(".btn-close");
 
 // DOM Error Message
 
@@ -103,7 +103,12 @@ const checkBirthDate = function (birthdateInput) {
 };
 
 const checkNumberOfGame = function (quantityInput) {
-  if (quantityInput.isNan || quantityInput ==="" || quantityInput > 99 || quantityInput < 0) {
+  if (
+    quantityInput.isNan ||
+    quantityInput === "" ||
+    quantityInput > 99 ||
+    quantityInput < 0
+  ) {
     errorMessageNumber.style.display = "inline-block";
     document.querySelector(".error-outline-number").style.outline =
       "1px solid red";
@@ -161,6 +166,26 @@ inputSubmit.addEventListener("click", (event) => {
     checkLocation() === true &&
     checkCheckbox() === true
   ) {
+    return launchModalConfirmation();
     // return launchModalConfirmation();
   }
 });
+
+// launch modal confirmation form (2)
+function launchModalConfirmation() {
+  modalbg.style.display = "none";
+  modalConfirmation.style.display = "block";
+}
+
+// closing modal confirmation form (2)
+modalCloseBtn.forEach((btn) =>
+  btn.addEventListener("click", modalCloseConfirmation)
+);
+
+modalConfirmationCloseBtn.forEach((btn) =>
+  btn.addEventListener("click", modalCloseConfirmation)
+);
+
+function modalCloseConfirmation() {
+  modalConfirmation.style.display = "none";
+}
