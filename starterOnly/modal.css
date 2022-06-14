@@ -68,6 +68,12 @@ img {
   display: none;
 }
 
+@media screen and (min-width: 541px) and (max-width: 838px) {
+  .topnav a.icon {
+    margin-top: -12px;
+  }
+}
+
 @media screen and (min-width: 800px) {
   #checkbox {
     margin-left: 40px;
@@ -75,7 +81,7 @@ img {
   .hero-content {
     min-width: 424px;
     font-size: 22px;
-    padding-right: 85px!important;
+    padding-right: 85px !important;
   }
 }
 
