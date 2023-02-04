@@ -13,7 +13,7 @@ ________________________________________________________________________________
 Landing page implementation for a video game site.
 
 JS Features
-- Opening and closing the modal
+- Modal opening and closing
 - Implementation of form entries
 - Implementation of error messages
-- Mode of confirmation of validation of the form
+- New pop-up for confirming form validation
