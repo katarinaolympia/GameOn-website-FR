@@ -1,5 +1,19 @@
 # Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+
+Création d'une landing page pour un site de jeux vidéos.
+
+Fonctionalités JS
+- Ouverture et fermeture de la modale
+- Implémentation des entrées du formulaire 
+- Implémentation des messages d'erreur
+- Modale de confirmation de validation du formulaire
+
+___________________________________________________________________________________
+
+Landing page implementation for a video game site.
+
+JS Features
+- Opening and closing the modal
+- Implementation of form entries
+- Implementation of error messages
+- Mode of confirmation of validation of the form
